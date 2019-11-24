@@ -24,6 +24,7 @@ defmodule QuizWeb do
       import Plug.Conn
       import QuizWeb.Gettext
       alias QuizWeb.Router.Helpers, as: Routes
+      import Phoenix.LiveView.Controller
     end
   end
 
@@ -41,6 +42,18 @@ defmodule QuizWeb do
 
       import QuizWeb.ErrorHelpers
       import QuizWeb.Gettext
+
+      import Phoenix.LiveView,
+        only: [
+          live_render: 2,
+          live_render: 3,
+          live_link: 1,
+          live_link: 2,
+          live_component: 2,
+          live_component: 3,
+          live_component: 4
+        ]
+
       alias QuizWeb.Router.Helpers, as: Routes
     end
   end
@@ -50,6 +63,7 @@ defmodule QuizWeb do
       use Phoenix.Router
       import Plug.Conn
       import Phoenix.Controller
+      import Phoenix.LiveView.Router
     end
   end
 

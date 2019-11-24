@@ -12,7 +12,10 @@ config :quiz, QuizWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "oSTm4+blwS0Yz3cqlYvMKiW4pzOKbppIG5EIefzSzL6xcLo5gfYECkjHsvXhWF8O",
   render_errors: [view: QuizWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: Quiz.PubSub, adapter: Phoenix.PubSub.PG2]
+  pubsub: [name: Quiz.PubSub, adapter: Phoenix.PubSub.PG2],
+  live_view: [
+    signing_salt: "Oem/n5mShACJMBSKLyrz5vljXlOQP6rF"
+  ]
 
 # Configures Elixir's Logger
 config :logger, :console,
