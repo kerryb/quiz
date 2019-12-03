@@ -23,14 +23,34 @@ defmodule QuizWeb.ScoreboardLive do
     {:noreply, socket |> assign(teams: teams, state: :answer)}
   end
 
+  def handle_event("keydown", %{"key" => "["}, %{assigns: %{state: :answer}} = socket) do
+    teams = socket.assigns.teams |> Enum.into(%{}, &dec_if_buzzed/1)
+    {:noreply, socket |> assign(teams: teams, state: :question)}
+  end
+
+  defp dec_if_buzzed({id, %{buzzed?: true} = team}) do
+    {id, %{team | score: team.score - 1, buzzed?: false}}
+  end
+
+  defp dec_if_buzzed({id, team}), do: {id, %{team | buzzed?: false}}
+
+  def handle_event("keydown", %{"key" => "]"}, %{assigns: %{state: :answer}} = socket) do
+    teams = socket.assigns.teams |> Enum.into(%{}, &inc_if_buzzed/1)
+    {:noreply, socket |> assign(teams: teams, state: :question)}
+  end
+
+  defp inc_if_buzzed({id, %{buzzed?: true} = team}) do
+    {id, %{team | score: team.score + 1, buzzed?: false}}
+  end
+
+  defp inc_if_buzzed({id, team}), do: {id, %{team | buzzed?: false}}
+
   def handle_event("keydown", %{"key" => "Escape"}, %{assigns: %{state: :answer}} = socket) do
     teams = socket.assigns.teams |> Enum.into(%{}, &clear_buzzed/1)
     {:noreply, socket |> assign(teams: teams, state: :question)}
   end
 
-  defp clear_buzzed({id, team}) do
-    {id, %{team | buzzed?: false}}
-  end
+  defp clear_buzzed({id, team}), do: {id, %{team | buzzed?: false}}
 
   def handle_event(_event, _args, socket) do
     {:noreply, socket}
