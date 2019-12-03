@@ -19,12 +19,8 @@ defmodule QuizWeb.ScoreboardLive do
 
   def handle_event("keydown", %{"key" => key}, %{assigns: %{state: :question}} = socket)
       when key in ~w(1 2 3 4) do
-    teams = socket.assigns.teams |> buzz(key)
+    teams = socket.assigns.teams |> put_in([key, :buzzed?], true)
     {:noreply, socket |> assign(teams: teams, state: :answer)}
-  end
-
-  defp buzz(teams, key) do
-    teams |> put_in([key, :buzzed?], true)
   end
 
   def handle_event("keydown", %{"key" => "Escape"}, %{assigns: %{state: :answer}} = socket) do
