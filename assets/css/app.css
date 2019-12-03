@@ -42,3 +42,30 @@ body {
   font-weight: bold;
   color: #4F4;
 }
+
+#help {
+  margin: 5rem auto 0 auto;
+  padding-left: 1rem;
+}
+
+kbd {
+  border: 1px solid #444;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  line-height: 1.4;
+  color: black;
+  background-color: #888;
+}
+
+#help dl, #help dt, #help dd {
+  display: inline;
+}
+
+#help dt {
+  margin: 0 1rem 0 0;
+}
+
+#help dd {
+  margin: 0 5rem 0 0;
+  color: #888;
+}

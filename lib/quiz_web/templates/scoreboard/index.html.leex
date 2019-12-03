@@ -6,3 +6,10 @@
     </div>
   <% end %>
 </div>
+<%= if @state == :answer do %>
+  <dl id="help">
+    <dt><kbd>[</kbd></dt><dd>dock point</dd>
+    <dt><kbd>]</kbd></dt><dd>award point</dd>
+    <dt><kbd>esc</kbd></dt><dd>no points</dd>
+  </dl>
+<% end %>
