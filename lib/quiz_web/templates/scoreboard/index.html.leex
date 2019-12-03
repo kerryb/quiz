@@ -1,6 +1,8 @@
-<%= for team <- @teams do %>
-  <div class="team <%= if team.buzzed?, do: "buzzed" %>" id="team-<%= team.id %>">
-    <div class="light"><%= team.name %></div>
-    <div class="score"><%= team.score %></div>
-  </div>
-<% end %>
+<div phx-keydown="keydown" phx-target="window">
+  <%= for {id, team} <- @teams do %>
+    <div class="team <%= if team.buzzed?, do: "buzzed" %>" id="team-<%= id %>">
+      <div class="light"><%= team.name %></div>
+      <div class="score"><%= team.score %></div>
+    </div>
+  <% end %>
+</div>
