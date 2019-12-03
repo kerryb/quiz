@@ -1,6 +1,6 @@
-<%= for {name, index} <- Enum.with_index(["Team One", "Team Two", "Team Three", "Team Four"]) do %>
-  <div class="team" id="team-<%= index %>">
-    <div class="light"><%= name %></div>
-    <div class="score">0</div>
+<%= for team <- @teams do %>
+  <div class="team <%= if team.buzzed?, do: "buzzed" %>" id="team-<%= team.id %>">
+    <div class="light"><%= team.name %></div>
+    <div class="score"><%= team.score %></div>
   </div>
 <% end %>
