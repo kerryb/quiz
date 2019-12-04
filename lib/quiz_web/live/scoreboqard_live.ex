@@ -1,5 +1,6 @@
 defmodule QuizWeb.ScoreboardLive do
   use Phoenix.LiveView
+  alias QuizWeb.Endpoint
 
   def render(assigns) do
     Phoenix.View.render(QuizWeb.ScoreboardView, "index.html", assigns)
@@ -19,6 +20,7 @@ defmodule QuizWeb.ScoreboardLive do
 
   def handle_event("keydown", %{"key" => key}, %{assigns: %{state: :question}} = socket)
       when key in ~w(1 2 3 4) do
+    Endpoint.broadcast!("buzzer", "buzz", %{})
     teams = socket.assigns.teams |> put_in([key, :buzzed?], true)
     {:noreply, socket |> assign(teams: teams, state: :answer)}
   end

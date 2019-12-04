@@ -1,3 +1,4 @@
+<audio id="buzzer" src="<%= Routes.static_path(QuizWeb.Endpoint, "/sounds/buzzer.wav") %>"></audio>
 <div phx-keydown="keydown" phx-target="window">
   <%= for {id, team} <- @teams do %>
     <div class="team <%= if team.buzzed?, do: "buzzed" %>" id="team-<%= id %>">

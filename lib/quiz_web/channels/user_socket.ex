@@ -2,7 +2,7 @@ defmodule QuizWeb.UserSocket do
   use Phoenix.Socket
 
   ## Channels
-  # channel "room:*", QuizWeb.RoomChannel
+  channel "buzzer", QuizWeb.BuzzerChannel
 
   # Socket params are passed from the client and can
   # be used to verify and authenticate a user. After
