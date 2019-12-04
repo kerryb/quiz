@@ -14,7 +14,8 @@ defmodule QuizWeb.ScoreboardLive do
     %{
       "1" => %{name: "Team one", score: 0, buzzed?: false, editing?: false},
       "2" => %{name: "Team two", score: 0, buzzed?: false, editing?: false},
-      "3" => %{name: "Team three", score: 0, buzzed?: false, editing?: false}
+      "3" => %{name: "Team three", score: 0, buzzed?: false, editing?: false},
+      "4" => %{name: "Team four", score: 0, buzzed?: false, editing?: false}
     }
   end
 
