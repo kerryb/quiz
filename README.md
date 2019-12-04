@@ -1,4 +1,9 @@
-# Quiz
+# Quiz Scoreboard
+
+Simple quiz scoreboard, intended to work with buzzers wired up to send
+keystrokes `1`, `2`, `3` and `4`. Built with Phoenix Live View.
+
+Team names can be edited by clicking on them.
 
 To start your Phoenix server:
 
@@ -7,13 +12,3 @@ To start your Phoenix server:
   * Start Phoenix endpoint with `mix phx.server`
 
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
-
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
-
-## Learn more
-
-  * Official website: http://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Mailing list: http://groups.google.com/group/phoenix-talk
-  * Source: https://github.com/phoenixframework/phoenix
