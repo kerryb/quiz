@@ -2,7 +2,11 @@
 <div phx-keydown="keydown" phx-target="window">
   <%= for {id, team} <- @teams do %>
     <div class="team <%= if team.buzzed?, do: "buzzed" %>" id="team-<%= id %>">
-      <div class="light"><%= team.name %></div>
+      <%= if team.editing? do %>
+        <input class="team-name" autofocus="true" phx-blur="save_name" phx-value-id="<%= id %>">
+      <% else %>
+        <div class="light" phx-click="edit_name" phx-value-id="<%= id %>"><%= team.name %></div>
+      <% end %>
       <div class="score"><%= team.score %></div>
     </div>
   <% end %>

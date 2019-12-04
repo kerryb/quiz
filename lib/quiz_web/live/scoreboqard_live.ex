@@ -12,10 +12,20 @@ defmodule QuizWeb.ScoreboardLive do
 
   defp initial_teams do
     %{
-      "1" => %{name: "Team one", score: 0, buzzed?: false},
-      "2" => %{name: "Team two", score: 0, buzzed?: false},
-      "3" => %{name: "Team three", score: 0, buzzed?: false}
+      "1" => %{name: "Team one", score: 0, buzzed?: false, editing?: false},
+      "2" => %{name: "Team two", score: 0, buzzed?: false, editing?: false},
+      "3" => %{name: "Team three", score: 0, buzzed?: false, editing?: false}
     }
+  end
+
+  def handle_event("edit_name", %{"id" => id}, socket) do
+    teams = socket.assigns.teams |> put_in([id, :editing?], true)
+    {:noreply, socket |> assign(teams: teams, state: :edit)}
+  end
+
+  def handle_event("save_name", %{"id" => id, "value" => name}, socket) do
+    teams = socket.assigns.teams |> put_in([id, :editing?], false) |> put_in([id, :name], name)
+    {:noreply, socket |> assign(teams: teams, state: :question)}
   end
 
   def handle_event("keydown", %{"key" => key}, %{assigns: %{state: :question}} = socket)
